@@ -1,5 +1,5 @@
 install:
-	xargs sudo apt-get install -y <requirements.txt
+	xargs apt-get install -y <requirements.txt
 
 build:
 	gcc -Wall ${file}.c -o bin/${file} -I /usr/include/postgresql/ -lpq -lcurl -ljson-c 
