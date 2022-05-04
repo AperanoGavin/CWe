@@ -1,0 +1,3 @@
+libcurl4-gnutls-dev
+libjson-c-dev
+libpq-dev
