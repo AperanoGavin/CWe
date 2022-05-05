@@ -24,9 +24,15 @@ int json_parse(){
     struct json_object *weather;
     struct json_object *main_desc;
     struct json_object *description;
+    struct json_object *winds;
+    struct json_object *wind_speed, *wind_deg, *wind_gust;
+    struct json_object *visibility, *dt_txt;
+    struct json_object *city, *name, *sunrise, *sunset;
 
-    char *array[11]={"temp", "feels_like", "temp_min", "temp_max", "pressure", "sea_level", "grnd_level", "humidity", "temp_kf", "main", "description"};
-    char *json_string[11];
+    char *array[19]={"temp", "feels_like", "temp_min", "temp_max", "pressure", "sea_level", "grnd_level",\
+    "humidity", "temp_kf", "main", "description", "wind_speed", "wind_deg", "wind_gust", "visibility", "dt_txt",\
+    "name", "sunrise", "sunset"};
+    char *json_string[19];
 
     size_t n_lists, n_weathers, i;
 
@@ -84,6 +90,31 @@ int json_parse(){
         json_string[9] = (char *)json_object_get_string(main_desc);
         json_string[10] = (char *)json_object_get_string(description);
     }
+
+    tmp = json_object_get(list);
+    json_object_object_get_ex(tmp, "wind", &winds);
+    json_object_object_get_ex(winds, "speed", &wind_speed);
+    json_object_object_get_ex(winds, "deg", &wind_deg);
+    json_object_object_get_ex(winds, "gust", &wind_gust);
+
+    json_string[11] = (char *)json_object_get_string(wind_speed);
+    json_string[12] = (char *)json_object_get_string(wind_deg);
+    json_string[13] = (char *)json_object_get_string(wind_gust);
+
+    json_object_object_get_ex(tmp, "visibility", &visibility);
+    json_string[14] = (char *)json_object_get_string(visibility);
+
+    json_object_object_get_ex(tmp, "dt_txt", &dt_txt);
+    json_string[15] = (char *)json_object_get_string(dt_txt);
+
+    json_object_object_get_ex(parsed_json, "city", &city);
+    // json_object_object_get_ex(city, "name", &name);
+    json_object_object_get_ex(city, "sunrise", &sunrise);
+    json_object_object_get_ex(city, "sunset", &sunset);
+
+    // json_string[16] = (char *)json_object_get_string(name);
+    json_string[17] = (char *)json_object_get_string(sunrise);
+    json_string[18] = (char *)json_object_get_string(sunset);
 
     printf("Parsed Infos :\n");
     for (i = 0; i < sizeof(json_string)/sizeof(json_string[0]) ; i++)

@@ -14,6 +14,7 @@ void insert_weather(char **json_string)
 
     char query_string[] = { 
     "INSERT INTO Weather_Report(\
+        Date_time, \
         Temp,\
         Feels_like, \
         Temp_max, \
@@ -24,12 +25,20 @@ void insert_weather(char **json_string)
         Humidity, \
         Temp_kf, \
         Main_cast, \
-        Description)\
-    VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, '%s', '%s')" 
+        Description, \
+        Wind_speed, \
+        Wind_deg, \
+        Wind_gust, \
+        Visibility, \
+        Sunrise_time, \
+        Sunset_time)\
+    VALUES('%s', %s, %s, %s, %s, %s, %s, %s, %s, %s, '%s', '%s', %s, %s, %s, %s, %s, %s)" 
     };
-    sprintf(buffer, query_string, json_string[0], json_string[1],\
+    sprintf(buffer, query_string, json_string[15], json_string[0], json_string[1],\
     json_string[2], json_string[3], json_string[4], json_string[5],\
-    json_string[6], json_string[7], json_string[8], json_string[9], json_string[10]);
+    json_string[6], json_string[7], json_string[8], json_string[9],\
+    json_string[10], json_string[11], json_string[12], json_string[13],\
+    json_string[14], json_string[17], json_string[18]);
 
     PGconn *conn = PQconnectdb("host=postgres-01 user=postgres password=WXcvbn123");
     PGresult* res;
