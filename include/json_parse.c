@@ -6,10 +6,8 @@ int json_parse(){
     FILE *fp;
     char buffer[40000];
 
-    struct json_object *parsed_json;
-    struct json_object *tmp;
-    struct json_object *lists;
-    struct json_object *list;
+    struct json_object *parsed_json, *tmp;
+    struct json_object *lists, *list;
     struct json_object *main_list;
     struct json_object *temp;
     struct json_object *feels_like;
@@ -20,14 +18,11 @@ int json_parse(){
     struct json_object *grnd_level;
     struct json_object *humidity;
     struct json_object *temp_kf;
-    struct json_object *weathers;
-    struct json_object *weather;
-    struct json_object *main_desc;
-    struct json_object *description;
-    struct json_object *winds;
-    struct json_object *wind_speed, *wind_deg, *wind_gust;
+    struct json_object *weathers, *weather, *main_desc, *description;
+    struct json_object *winds, *wind_speed, *wind_deg, *wind_gust;
     struct json_object *visibility, *dt_txt;
-    struct json_object *city, *name, *sunrise, *sunset;
+    struct json_object *city, *sunrise, *sunset;
+    //struct json_object *name;
 
     char *array[19]={"temp", "feels_like", "temp_min", "temp_max", "pressure", "sea_level", "grnd_level",\
     "humidity", "temp_kf", "main", "description", "wind_speed", "wind_deg", "wind_gust", "visibility", "dt_txt",\
