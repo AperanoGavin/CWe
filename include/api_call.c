@@ -7,7 +7,7 @@ int get_json()
     CURL *hnd = curl_easy_init();
 
     curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_easy_setopt(hnd, CURLOPT_URL, "http://api.openweathermap.org/data/2.5/forecast?id=2996944&appid=9ea3f3b997074b2151c3a5ff8e0f48ab");
+    curl_easy_setopt(hnd, CURLOPT_URL, "http://api.openweathermap.org/data/2.5/forecast?id=2996944&appid=9ea3f3b997074b2151c3a5ff8e0f48ab&units=metric");
 
     struct curl_slist *headers = NULL;
     curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
