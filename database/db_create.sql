@@ -66,8 +66,8 @@ CREATE TABLE Weather_Report(
    Wind_deg float8,
    Wind_gust float8,
    Visibility integer,
-   Sunrise_time timestamp,
-   Sunset_time timestamp,
+   Sunrise_time integer,
+   Sunset_time integer,
    PRIMARY KEY(ID_geolocation)
 );
 
