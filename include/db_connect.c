@@ -40,7 +40,7 @@ void insert_weather(char **json_string)
     json_string[10], json_string[11], json_string[12], json_string[13],\
     json_string[14], json_string[17], json_string[18]);
 
-    PGconn *conn = PQconnectdb("host=localhost user=gavin password=password");
+    PGconn *conn = PQconnectdb("host=localhost user=Weather_Report password=password");
     PGresult* res;
     if(conn != NULL)
     {
@@ -61,7 +61,7 @@ void insert_weather(char **json_string)
 
 int go_weather(char **json_string) {
     
-    PGconn *conn = PQconnectdb("host=localhost user=gavin password=password");
+    PGconn *conn = PQconnectdb("host=localhost user=Weather_Report password=password");
 
     if (PQstatus(conn) == CONNECTION_BAD) {
         
